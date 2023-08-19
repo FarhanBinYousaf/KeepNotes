@@ -61,7 +61,9 @@ ROOT_URLCONF = 'mynotes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'frontend/build'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+""" This below code is for React App"""
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/build/static'
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -131,3 +138,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+
+
+""" I have installed `coresheaders` in installed apps, the purpose of this to use is that when we hit API endpoint of DRF from other server django don't allow that to perform. For that purpose i have defined => `CORS_ALLOW_ALL_ORIGINS = True`"""
